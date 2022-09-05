@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: spring-security-basic
+  profiles:
+    group:
+      in-memory-user:
+        - in-memory
+        #- security-filter-chain
+        - web-security-adapter
+      jdbc-user:
+        - h2
+        - web-security-adapter
+
