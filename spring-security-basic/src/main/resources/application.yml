@@ -10,4 +10,11 @@ spring:
       jdbc-user:
         - h2
         - web-security-adapter
+      ldap:
+        - web-security-adapter
 
+  ldap:
+    embedded:
+      ldif: classpath:server.ldif
+      port: 33389
+      base-dn: dc=springland365,dc=com
