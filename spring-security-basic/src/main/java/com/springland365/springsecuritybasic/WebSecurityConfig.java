@@ -15,17 +15,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-
-
-        http.authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll().
-                and().authorizeRequests().anyRequest().authenticated()
-                        .and().csrf().ignoringAntMatchers("/h2-console/**");
-
         http.formLogin();
         http.httpBasic();
         http.logout();
         http.headers().frameOptions().disable();
+
+
+        http.authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll().
+                 mvcMatchers("/read").hasAuthority("READ").
+                mvcMatchers("/write").hasAuthority("WRITE").
+                mvcMatchers("/manager").hasRole("MANAGER").
+                anyRequest()
+                .authenticated()
+                        .and().csrf().ignoringAntMatchers("/h2-console/**");
+
+
 
     }
 

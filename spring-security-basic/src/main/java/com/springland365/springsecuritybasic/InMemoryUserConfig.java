@@ -36,8 +36,8 @@ public class InMemoryUserConfig {
         encoded = bCryptPasswordEncoder.encode(password);
         log.info("bcrypt 2: " + encoded);
 
-        UserDetails  admin = User.withUsername("admin").password(String.format("{bcrypt}%s", encoded)).authorities("ADMIN" , "USER").build();
-
+        //UserDetails  admin = User.withUsername("admin").password(String.format("{bcrypt}%s", encoded)).roles("ADMIN").authorities("WRITE" , "READ").build();
+        UserDetails  admin = User.withUsername("admin").password(String.format("{bcrypt}%s", encoded)).authorities("WRITE" , "READ").build();
         inMemoryUserDetailsManager.createUser(admin);
 
         Pbkdf2PasswordEncoder  pbkdf2PasswordEncoder = new Pbkdf2PasswordEncoder();
@@ -46,7 +46,8 @@ public class InMemoryUserConfig {
         encoded = pbkdf2PasswordEncoder.encode(password);
         log.info("pbkdf2 2: " + encoded );
 
-        UserDetails user = User.withUsername("user").password(String.format("{pbkdf2}%s", encoded)).authorities("USER").build();
+        //UserDetails user = User.withUsername("user").password(String.format("{pbkdf2}%s", encoded)).roles("USER").authorities("READ").build();
+        UserDetails user = User.withUsername("user").password(String.format("{pbkdf2}%s", encoded)).authorities("READ").build();
 
         inMemoryUserDetailsManager.createUser( user  );
 
@@ -57,7 +58,7 @@ public class InMemoryUserConfig {
         encoded = sCryptPasswordEncoder.encode(password);
         log.info("scrypt 2: " + encoded );
 
-        UserDetails manager = User.withUsername("manager").password(String.format("{scrypt}%s", encoded)).authorities("MANAGER" , "USER").build();
+        UserDetails manager = User.withUsername("manager").password(String.format("{scrypt}%s", encoded)).roles("MANAGER" ).build();
         inMemoryUserDetailsManager.createUser( manager   );
 
 

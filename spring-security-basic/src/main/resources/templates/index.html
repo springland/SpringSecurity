@@ -12,24 +12,27 @@
 <body>
     <h1> Spring Security Basic</h1>
 
-    <h1 th:text="${#authentication.getPrincipal().getUsername()}"> UserName</h1>
-    <h1 th:text="${#authentication.getPrincipal().authorities}">Auhtorities</h1>
 
+    <div sec:authorize="hasAnyAuthority('READ' , 'WRITE')">Text visible to users with either read or write authority.</div>
+    <div sec:authorize="hasAuthority('READ')">Text visible to users with  read authority.</div>
+    <div sec:authorize="hasAuthority('WRITE')">Text visible to users with   write authority.</div>
     <div sec:authorize="hasRole('USER')">Text visible to user.</div>
     <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
     <div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>
     Authenticated username:
     <div sec:authentication="name"></div>
-    Authenticated user's firstName:
-    <div sec:authentication="principal.firstName"></div>
-    Authenticated user's lastName:
-    <div sec:authentication="principal.lastName"></div>
-    Authenticated user's email:
-    <div sec:authentication="principal.lastName"></div>
-    Authenticated user roles:
+    Authenticated user authorities:
     <div sec:authentication="principal.authorities"></div>
 
-    <a href="/logout">Logout</a>
+
+    <br/>
+    <a th:href="@{/read}"> read page</a>
+    <br/>
+    <a th:href="@{/write}"> write page</a>
+    <br/>
+    <a th:href="@{/manager}"> manager page</a>
+    <br/>
+    <a th:href="@{/logout}">Sign Out</a>
 
 </body>
 </html>
