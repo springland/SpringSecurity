@@ -1,3 +1,13 @@
+Implement a basic spring security spring server with below
+
+1. UserDetailService
+2. PasswordEncoder , httpBasic and form authentication
+3. LDAP
+4. restric access
+5. authorization based on role
+
+
+
 SpringSecurityFilter was introduced from SpringSecurity 5.4 and WebSecurityConfigurationAdapter was depreciated
 
 The below profiles are used for each

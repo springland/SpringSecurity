@@ -1,25 +1,17 @@
 # SpringSecurity
 
-## spring-security-basic
-Implement a basic spring security spring server
-UserDetailService , PasswordEncoder , httpBasic and form authentication
-
-LDAP
+### [Spring Security Basic](./spring-security-basic/SpringSecurityBasic.md)
 
 
-## restric access
+### [Spring Security MFA](./spring-security-mfa/SpringSecurityMFA.md)
 
-## authorization based on role
+###  oauth2  with okta
 
-## authentication with google authenticator
+### oauth2 authorization server
 
-##  oauth2  with okta
+### oauth2 resource server
 
-## oauth2 authorization server
+### oauth2 client
 
-## oauth2 resource server
-
-## oauth2 client
-
-## Reactive 
-## AWS Integration
+### Reactive 
+### AWS Integration
