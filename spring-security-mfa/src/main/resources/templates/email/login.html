@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" th:href="@{../css/email/login.css}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="top-row">
+                    <h1>Hello again</h1>
+                    <p>Log in with your email and password</p>
+                </div>
+                <div class="card-details">
+                    <input type="text" placeholder="Enter your name">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="card-details">
+                    <input type="password" id="password-input" placeholder="Enter your password">
+                    <i class="fa fa-lock"></i>
+                    <span><small class="fa fa-eye-slash passcode"></small></span>
+
+                </div>
+
+                <p class="forget">Forgot your password?</p>
+
+                <button class="sign-in">Sign in</button>
+
+                <p class="sign-up">Dont't have an account?<a href="/email/signup"> Sign up</a></p>
+
+            </div>
+        </div>
+    </body>
+</html>

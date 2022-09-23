@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+}
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+.container{
+    min-height:100vh;
+     background: #007bff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card{
+    height:380px;
+    width:320px;
+    border-radius:10px;
+    background-color:#2d2ec6;
+    padding:20px;
+    font-family: 'Poppins', sans-serif;
+}
+.top-row{
+    color:#fff;
+}
+.top-row p{
+    padding-bottom:20px;
+}
+.card-details{
+    position:relative;
+    display:flex;
+
+    padding-bottom:20px;
+}
+.card-details input{
+    height:50px;
+    width:100%;
+    font-size:18px;
+    caret-color:white;
+    background-color:#444ec7;
+    color:white;
+    padding:0px 20px;
+    padding-left:50px;
+    box-sizing:border-box;
+    border-radius:10px;
+    outline:none;
+    border:none;
+}
+.card-details i{
+    position:absolute;
+    left:10px;
+    top:16px;
+    color:#ffe4be;
+    font-size:18px;
+}
+.card-details span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    color:#ffe4be;
+    font-size:10px;
+    color:#000;
+    right:10px;
+    top:15px;
+    opacity:0.4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.card-details span:hover{
+    opacity:1;
+}
+.forget{
+    color:#fff;
+    margin-bottom:13px;
+}
+.sign-in{
+   display:flex;
+   justify-content:center;
+   align-items:center;
+    height:60px;
+    width:100%;
+    font-size:17px;
+    color:blue;
+    border-radius:10px;
+    background-color:#fcdba8;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.5s;
+    border:none;
+}
+.sign-in:hover{
+    background-color:#b7a486;
+
+}
+.sign-up{
+    margin-top:30px;
+    color:#ccc;
+}
+.sign-up a{
+    color:#fff;
+    text-decoration:none;
+    transition:all 0.5s;
+}
+.sign-up a:hover{
+    color:#f4d5a8;
+}
+
+.warning{
+    border:2px solid red !important;
+}
