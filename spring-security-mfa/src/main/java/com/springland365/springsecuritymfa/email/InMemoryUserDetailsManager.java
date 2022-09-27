@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,21 @@ public class InMemoryUserDetailsManager implements UserDetailsService  , UserDet
     Map<String , EmailMFAUserDetails> userDetailsMap = new HashMap<>();
 
 
+
+    public InMemoryUserDetailsManager()
+    {
+        // add one boot strap user for basic authentication
+
+    }
+
+
+    @PostConstruct
+    public void init()
+    {
+        EmailMFAUserDetails  basicUser = new EmailMFAUserDetails("basic" , passwordEncoder.encode("password") , null , Collections.EMPTY_LIST);
+        userDetailsMap.put(basicUser.userName , basicUser);
+
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

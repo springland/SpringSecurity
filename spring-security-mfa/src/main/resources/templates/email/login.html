@@ -10,21 +10,22 @@
                     <h1>Hello again</h1>
                     <p>Log in with your email and password</p>
                 </div>
-                <div class="card-details">
-                    <input type="text" placeholder="Enter your name">
-                    <i class="fa fa-envelope"></i>
-                </div>
-                <div class="card-details">
-                    <input type="password" id="password-input" placeholder="Enter your password">
-                    <i class="fa fa-lock"></i>
-                    <span><small class="fa fa-eye-slash passcode"></small></span>
+                <form  th:action="@{/email/login}" th:object="${userlogin}">
+                        <div class="card-details">
+                            <input type="text" placeholder="Enter your name"  th:field="*{username}">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div class="card-details">
+                            <input type="password" id="password-input" th:field="*{password}" placeholder="Enter your password">
+                            <i class="fa fa-lock"></i>
+                            <span><small class="fa fa-eye-slash passcode"></small></span>
 
-                </div>
+                        </div>
 
-                <p class="forget">Forgot your password?</p>
+                        <p class="forget">Forgot your password?</p>
 
-                <button class="sign-in">Sign in</button>
-
+                        <button class="sign-in" type="submit">Sign in</button>
+                </form>
                 <p class="sign-up">Dont't have an account?<a href="/email/signup"> Sign up</a></p>
 
             </div>

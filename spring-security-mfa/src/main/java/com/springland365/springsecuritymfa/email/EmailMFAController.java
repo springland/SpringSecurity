@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @Slf4j
-public class EmailMVCController {
+public class EmailMFAController {
 
     @Autowired
     UserDetailsRepo  userDetailsRepo ;
@@ -26,11 +26,20 @@ public class EmailMVCController {
 
 
     @GetMapping("/email/login")
-    public String  emailMFALogin()
+    public String  emailMFALogin(Model model)
     {
+
+
+        model.addAttribute("userlogin" , new UserLogin());
+
         return "email/login.html";
     }
 
+    @PostMapping
+    public String emailMFALogin(@ModelAttribute("userlogin") UserLogin login)
+    {
+        return "/email/code";
+    }
 
     @GetMapping("/email/signup")
     public String  emailMFASignup(Model model)
@@ -40,12 +49,17 @@ public class EmailMVCController {
         return "email/signup.html";
     }
 
-    @GetMapping("email/code")
+    @GetMapping("/email/code")
     public String emailMFACode()
     {
         return "email/mfacode.html";
     }
 
+    @PostMapping("/email/code")
+    public String emailCode()
+    {
+        return "";
+    }
 
     @PostMapping("/email/signup")
     public String signup(@ModelAttribute Signup signup)

@@ -11,10 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Profile("email")
 public class PasswordEncoderConfig {
 
+
     @Bean
     public PasswordEncoder passwordEncoder()
     {
         return new BCryptPasswordEncoder();
     }
-
 }
+
