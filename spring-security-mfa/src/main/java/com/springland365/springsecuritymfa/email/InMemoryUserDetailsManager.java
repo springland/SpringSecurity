@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Component
 @Profile("email")
-public class InMemoryUserDetailsManager implements UserDetailsService  , UserDetailsRepo{
+public class InMemoryUserDetailsManager implements UserDetailsService  , UserDetailsManager {
 
     @Autowired
     PasswordEncoder  passwordEncoder ;
@@ -34,7 +34,7 @@ public class InMemoryUserDetailsManager implements UserDetailsService  , UserDet
     @PostConstruct
     public void init()
     {
-        EmailMFAUserDetails  basicUser = new EmailMFAUserDetails("basic" , passwordEncoder.encode("password") , null , Collections.EMPTY_LIST);
+        EmailMFAUserDetails  basicUser = new EmailMFAUserDetails("basic" , passwordEncoder.encode("password") , "fenglinmail@yahoo.com" , Collections.EMPTY_LIST);
         userDetailsMap.put(basicUser.userName , basicUser);
 
     }

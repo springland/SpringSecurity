@@ -6,27 +6,68 @@
     <body>
         <div class="container">
             <div class="card">
-                <div class="top-row">
+                <div class="top-row"  th:unless="${userlogin.password != null}">
                     <h1>Hello again</h1>
                     <p>Log in with your email and password</p>
                 </div>
-                <form  th:action="@{/email/login}" th:object="${userlogin}">
-                        <div class="card-details">
-                            <input type="text" placeholder="Enter your name"  th:field="*{username}">
-                            <i class="fa fa-envelope"></i>
+                <div class="top-row"  th:if="${userlogin.password != null}">
+                    <h1>Input  MAF Code received in email</h1>
+                </div>
+
+
+
+                    <form  th:action="@{/email/login}" th:object="${userlogin}" method="post">
+                            <div th:unless="*{password != null}">
+
+
+                                    <div class="card-details">
+                                        <input type="text" placeholder="Enter your name"   name = "emailmfausername" >
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="card-details">
+                                        <input type="password"   name = "emailmfapassword"  placeholder="Enter your password">
+                                        <i class="fa fa-lock"></i>
+                                        <span><small class="fa fa-eye-slash passcode"></small></span>
+
+                                    </div>
+
+                                    <div class="card-details" >
+                                        <p class="forget">Enter the code sent to your email </p>
+                                        <input  type="text"  placholder = "Enter Code"   name = "emailmfacode"  />
+                                    </div>
+                                    <p class="forget">Forgot your password?</p>
+
+                                    <button class="sign-in" type="submit">Sign in</button>
+                                <p class="sign-up">Dont't have an account?<a href="/email/signup"> Sign up</a></p>
+                            </div>
+                        <div th:if="*{password != null}">
+
+
+                            <div class="card-details">
+                                <input type="hidden" placeholder="Enter your name"  name = "username" th:field="*{username}">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+
+                            <div class="card-details">
+                                <input type="hidden" id="password-input-code" th:field="*{password}" placeholder="Enter your password">
+
+                                <span><small class="fa fa-eye-slash passcode"></small></span>
+
+                            </div>
+
+
+                            <div class="card-details" th:if="*{password != null}">
+                                <input  type="text"  name = "code" placholder = "Enter Code"  th:field="*{code}" />
+                            </div>
+
+
+                            <button class="sign-in" type="submit">Submit</button>
                         </div>
-                        <div class="card-details">
-                            <input type="password" id="password-input" th:field="*{password}" placeholder="Enter your password">
-                            <i class="fa fa-lock"></i>
-                            <span><small class="fa fa-eye-slash passcode"></small></span>
 
-                        </div>
+                    </form>
 
-                        <p class="forget">Forgot your password?</p>
+                </div>
 
-                        <button class="sign-in" type="submit">Sign in</button>
-                </form>
-                <p class="sign-up">Dont't have an account?<a href="/email/signup"> Sign up</a></p>
 
             </div>
         </div>

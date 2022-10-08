@@ -1,5 +1,15 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
     <h1>Email MFA Login Code </h1>
+    <form  th:action="@{/email/code}" th:object="${userlogin}" method="post">
+        <div class="card-details">
+            <input type="hidden"   th:field="*{username}">
+            <input type="hidden"   th:field="*{password}">
+            <input type="text" placeholder="Enter MAF Code received from email"  th:field="*{code}">
+            <i class="fa fa-envelope"></i>
+        </div>
+
+        <button class="sign-in" type="submit">Submit</button>
+    </form>
 
 </html>

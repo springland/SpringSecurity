@@ -14,6 +14,7 @@ public class EmailMFAUserDetails implements UserDetails {
 
     protected String email ;
 
+    protected String  code ;
     protected List<? extends GrantedAuthority> authorities ;
 
 
@@ -63,4 +64,16 @@ public class EmailMFAUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+    public String getCode()
+    {
+        return this.code ;
+    }
+
+    public void setCode(String code)
+    {
+        this.code = code ;
+    }
+
 }

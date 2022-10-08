@@ -15,7 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.formLogin();
+        http.formLogin().loginPage("/write");
         http.httpBasic();
         http.logout();
         http.headers().frameOptions().disable();
@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 mvcMatchers("/manager").hasRole("MANAGER").
                 anyRequest()
                 .authenticated()
-                        .and().csrf().ignoringAntMatchers("/h2-console/**");
+                        .and().csrf().ignoringAntMatchers("/h2-console/**") ;
 
 
 

@@ -1,6 +1,6 @@
 package com.springland365.springsecuritymfa.email;
 
-public interface UserDetailsRepo {
+public interface UserDetailsManager {
 
     void createUser(
             String userName ,

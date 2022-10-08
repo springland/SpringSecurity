@@ -10,7 +10,7 @@ Supports both basic and form authentication. Form authentication is used to demo
 The purpose to support both basic and form is to demonstrate authentication filter chain
 
 
-### How does spring security redirect request to login page
+### Login workflow
 
 #### Redirect to /login
 UsernamePasswordAuthenticationFilter
@@ -37,8 +37,14 @@ The AuthorizationFailureEvent is handled by ExceptionTranslationFilter.handleSpr
 
 #### Build Authentication
 
-
-
+Once login posts 
+UsernamePasswordAuthenticationFilter.doFilter 
+    Build UsernamePasswordAuthenticationToken - 
+        authenticateManager.authenticate  (ProviderManager) ->
+            parnent (DaoAuthenticationProvider).authenticate -> UserDetailedService + PasswordEncorder
+                AbstractUserDetailsAuthenticationProvider.createSuccessAuthentication : 
+                The PasswordEncoder generate a new encoded password each it the user is retrieved , create a new UsernamePasswordAuthenticationToken with UserDetails as principal
+                 
 #### Redirect back to original url
 
 After login successfully  
@@ -46,3 +52,9 @@ UsernamePasswordAuthenticationFilter.doFilter
     -> AbstractAuthenticationProcessingFilter.successfulAuthentication
         -> this.requestCache.getRequest(request, response)  to restore the url
             getRedirectStrategy().sendRedirect(request, response, targetUrl);
+
+
+http.basic() uses HttpBasicConfigurer to add BasicAuthenticationFilter 
+
+http.formLogin()  uses FormLoginConfigurer to add UsernamePasswordAuthenticationFilter 
+
